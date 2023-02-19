@@ -1,8 +1,8 @@
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, get_user_model, authenticate, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from Eshop.forms import LoginForm, RegisterForm
+from eshop_account.forms import LoginForm, RegisterForm
 
 
 # Create your views here.

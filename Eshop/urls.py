@@ -17,16 +17,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
 
-import Eshop.urls
-import eshop_account
-from Eshop import settings
+from django.conf import settings
 from . import views
 
 urlpatterns = [
     path('',views.home_page,name='home'),
+    path('',include('eshop_account.urls')),
+    path('', include('eshop_products.urls')),
     path('header/',views.header,name='header'),
     path('footer/',views.footer,name='footer'),
-    path('eshop/',include('eshop_account.urls')),
     path('admin/', admin.site.urls),
 ]
 
