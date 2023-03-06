@@ -3,6 +3,7 @@ from django.contrib import admin
 # Register your models here.
 
 from .models import Product
+from eshop_products_category.models import ProductCategory
 
 
 class ProductAdmin(admin.ModelAdmin):

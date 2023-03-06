@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.db import models
 import os
 
+from eshop_products_category.models import ProductCategory
 
 
 # Create your models here.
@@ -18,7 +19,11 @@ class ProductsManager(models.Manager):
             return None
 
     def search(self, query):
-        lookup = Q(title__icontains=query) | Q(description__icontains=query)
+        lookup = (
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(tag__title__icontains=query)
+        )
         return self.get_queryset().filter(lookup, active=True).distinct()
 
 
@@ -28,6 +33,7 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='قیمت')
     image = models.ImageField(upload_to='product/', null=True, blank=True, verbose_name='تصویر')
     active = models.BooleanField(default=False, verbose_name='فعال / غیرفعال')
+    categories = models.ManyToManyField(ProductCategory,blank=True,verbose_name='دسته بندی ها')
 
     objects = ProductsManager()
 

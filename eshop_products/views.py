@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from .models import Product
 from django.http import Http404
+from eshop_tag.models import Tag
 
 
 # Create your views here.
@@ -26,6 +27,8 @@ def product_detail(request, *args, **kwargs):
         'product': product
     }
 
+    # tag = Tag.objects.first()
+    # print (tag.products.all())
     return render(request, 'product_detail.html', context)
 
 
