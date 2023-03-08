@@ -14,6 +14,14 @@ class ProductsList(ListView):
     def get_queryset(self):
         return Product.objects.get_active_products()
 
+class ProductListByCategory(ListView):
+    template_name = 'product_list.html'
+    paginate_by = 6
+
+
+    def get_queryset(self):
+        print(self.kwargs)
+        return Product.objects.get_active_products()
 
 def product_detail(request, *args, **kwargs):
     product_id = kwargs['productId']
