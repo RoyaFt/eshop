@@ -39,11 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_render_partial',
 
-    #our applications:
+    #my applications:
     'eshop_account',
     'eshop_products',
     'eshop_tag',
     'eshop_products_category',
+    'eshop_sliders',
+    'eshop_contact',
+    'eshop_settings',
+    'eshop_order',
 ]
 
 MIDDLEWARE = [

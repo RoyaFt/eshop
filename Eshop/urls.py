@@ -24,6 +24,8 @@ urlpatterns = [
     path('',views.home_page,name='home'),
     path('',include('eshop_account.urls')),
     path('', include('eshop_products.urls')),
+    path('', include('eshop_contact.urls')),
+    #path('', include('eshop_order.urls')),
     path('header/',views.header,name='header'),
     path('footer/',views.footer,name='footer'),
     path('admin/', admin.site.urls),

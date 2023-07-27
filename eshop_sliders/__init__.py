@@ -1,0 +1,1 @@
+defult_app_config = 'eshop_slider_app.EshopSliderConfig'
