@@ -26,6 +26,9 @@ class ProductsManager(models.Manager):
         )
         return self.get_queryset().filter(lookup, active=True).distinct()
 
+    def get_products_by_category(self,category_name):
+        return self.get_queryset().filter(categories__name__iexact=category_name,active=True)
+
 
 class Product(models.Model):
     title = models.CharField(max_length=150, verbose_name='عنوان')
@@ -46,3 +49,15 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return f"/products/{self.id}/{self.title.replace(' ', '-')}"
+
+class ProductGallery(models.Model):
+    title = models.CharField(max_length=150 ,verbose_name='عنوان')
+    image = models.ImageField(upload_to='product/', null=True, blank=True, verbose_name='تصویر')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name='تصویر برای محصول')
+
+    class Meta:
+        verbose_name = 'تصویر'
+        verbose_name_plural = 'تصاویر'
+
+    def __str__(self):
+        return self.title
